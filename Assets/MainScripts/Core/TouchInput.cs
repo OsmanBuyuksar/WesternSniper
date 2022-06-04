@@ -3,11 +3,13 @@ using UnityEngine;
 public class TouchInput : MonoBehaviour
 {
    [HideInInspector] public float horizontal;
+   [HideInInspector] public float vertical;
 
-    private float startTouch;
-    private float swipeDelta;
+    private Vector3 startTouch;
+    private Vector3 swipeDelta;
 
     private float velocityX = 0f;
+    private float velocityY = 0f;
 
     private void Update()
     {
@@ -15,18 +17,19 @@ public class TouchInput : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetMouseButtonDown(0))
         {
-            startTouch = Input.mousePosition.x;
+            startTouch = Input.mousePosition;
         }
         if (Input.GetMouseButton(0))
         {
-            swipeDelta = Input.mousePosition.x - startTouch;
-            startTouch = Input.mousePosition.x;
+            swipeDelta = Input.mousePosition - startTouch;
+            startTouch = Input.mousePosition;
         }
         if (Input.GetMouseButtonUp(0))
         {
-            swipeDelta = 0f;
+            swipeDelta = Vector3.zero;
         }
-        horizontal = Mathf.SmoothDamp(horizontal, swipeDelta, ref velocityX, 0f);
+        horizontal = Mathf.SmoothDamp(horizontal, swipeDelta.x, ref velocityX, 0f);
+        vertical = Mathf.SmoothDamp(vertical, swipeDelta.y, ref velocityY, 0f);
 #else
 
         if (Input.touchCount > 0)
@@ -52,5 +55,10 @@ public class TouchInput : MonoBehaviour
 #endif
 
 
+    }
+
+    public Vector3 GetSwipeVector()
+    {
+        return swipeDelta;
     }
 }
