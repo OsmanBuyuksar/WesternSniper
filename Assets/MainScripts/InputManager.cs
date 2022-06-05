@@ -10,9 +10,10 @@ public class InputManager : MonoBehaviour
     [SerializeField] RectTransform touchToAimImg;
     [SerializeField] private CamerManager camManage;
     [SerializeField] private UXManager uxManage;
+    [SerializeField] private PlayerAimer player;
     [SerializeField] private CinemachineImpulseSource impulse;
 
-    private bool swiping = false;
+    bool scope = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,18 +23,20 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            swiping = true;
-            EnableScope(CheckIfInside()  || swiping);
+            scope = CheckIfInside();
+            EnableScope(scope);
         }
         else if (Input.GetMouseButtonUp(0))
-            impulse.GenerateImpulse(camManage.getActiveCam().transform.forward);
-        else 
         {
-            
-            EnableScope(false);
-            swiping = false; 
+            if (scope)
+            {
+                impulse.GenerateImpulse(camManage.getActiveCam().transform.forward);
+                player.Fire();
+            }
+            scope = false;
+            EnableScope(scope);
         }
         
     }

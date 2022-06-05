@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 public class UXManager : MonoBehaviour
 {
-    [SerializeField] private Canvas aimScope;
-    [SerializeField] private Canvas gamePlayCanvas;
+    [SerializeField] private GameObject aimScopeCanvas;
+    [SerializeField] private GameObject gamePlayCanvas;
     
     public void EnableScopeCanvas(bool isScopeEnabled)
     {
-        aimScope.enabled = isScopeEnabled;
-        gamePlayCanvas.enabled = !isScopeEnabled;
+        aimScopeCanvas.SetActive(isScopeEnabled);
+        gamePlayCanvas.SetActive(!isScopeEnabled);
     }
 }
