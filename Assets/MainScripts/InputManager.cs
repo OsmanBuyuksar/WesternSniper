@@ -25,6 +25,7 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            
             scope = CheckIfInside();
             EnableScope(scope);
         }
@@ -32,7 +33,7 @@ public class InputManager : MonoBehaviour
         {
             if (scope)
             {
-                impulse.GenerateImpulse(camManage.getActiveCam().transform.forward);
+                impulse.GenerateImpulse();
                 player.Fire();
             }
             scope = false;
@@ -47,6 +48,7 @@ public class InputManager : MonoBehaviour
 
     private void EnableScope(bool isScopeEnabled)
     {
+        
         uxManage.EnableScopeCanvas(isScopeEnabled);
         camManage.EnableScopeCamera(isScopeEnabled);
     }
