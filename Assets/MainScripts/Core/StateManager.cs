@@ -1,4 +1,3 @@
-using ElephantSDK;
 using UnityEngine;
 
 public class StateManager : Singleton<StateManager>
@@ -10,19 +9,16 @@ public class StateManager : Singleton<StateManager>
 
     private void StartGame()
     {
-        Elephant.LevelStarted(LevelManager.Instance.GetCurrentLevelIndex());
         UpdateState(GameState.OnStart);
     }
 
     private void WinGame()
     {
-        Elephant.LevelCompleted(LevelManager.Instance.GetCurrentLevelIndex());
         UpdateState(GameState.OnWin);
     }
 
     private void LoseGame()
     {
-        Elephant.LevelFailed(LevelManager.Instance.GetCurrentLevelIndex());
         UpdateState(GameState.OnLose);
     }
 

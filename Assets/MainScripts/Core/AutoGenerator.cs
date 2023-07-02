@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using FluffyUnderware.Curvy;
 using UnityEngine;
 public class AutoGenerator : MonoBehaviour
 {
