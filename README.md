@@ -1,5 +1,5 @@
 # Western Sniper Shoot Mechanic Prototype
 
-![Adsız.png]
+![Quick view](Adsız.png)
 
  
