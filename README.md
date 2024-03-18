@@ -1,5 +1,9 @@
 # Western Sniper Shoot Mechanic Prototype
- Prototoype of the western sniper shooting mechanic. That includes the scope camera in and out, shoot kick, camera movements and the enemy alerting when a shot is fired. 
+ Prototoype of the western sniper.
+ ## Implemented logics
+ - Camera movement and zoom, scope effects depending on the touched region in screen
+ - Kickback effect of shooting and aim check
+ - Enemy aim with adjustable accuracy
  
 ![Quick view](Adsız.png)
 
